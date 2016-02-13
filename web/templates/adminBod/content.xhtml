@@ -1,0 +1,14 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+    <!--sidebar start-->
+    <aside>
+        <div id="sidebar"  class="nav-collapse ">
+            <ui:include src="leftMenu.xhtml" />
+        </div>
+    </aside>
+          <!--main content start-->
+      <section id="main-content">
+          <ui:insert name="content" />
+      </section><!-- /MAIN CONTENT -->
+</ui:composition>
+

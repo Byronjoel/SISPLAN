@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <div class="row">
+            <div class="col-lg-12">
+                <div data-backdrop="static" class="modal fade" id="dialogDeleteRol" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-Width-view">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h:form>
+                                    <h:commandLink  onclick="$('#dialogDeleteRol').modal('hide')" type="reset" styleClass="close">
+                                        × 
+                                        <p:ajax update=":frmDeleteRol" resetValues="true" />
+                                    </h:commandLink>
+                                </h:form>
+                                <h4 class="modal-title" id="H4"> Eliminar Registro</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="modal-contenido">
+                                    <h:form class="form-horizontal" id="frmDeleteRol" rendered="false">
+                                        <fieldset>
+                                            <h:outputText value="¿Está seguro que desea eliminar datos de #{rolBean.selObjRol.nombre}?"/>
+                                            <hr/>
+                                            <!-- Button (Double) -->
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="button1id"></label>
+                                                <div class="col-md-8">
+                                                    <div class="modal-footer">
+                                                        <p:commandLink  actionListener="#{rolBean.eliminarRol()}" update="frmDeleteRol,:frmListaRol,:mensajes" oncomplete="handleSubmit(args, 'dialogDeleteRol');" styleClass="btn btn-success" title="Si">
+                                                            <i class="fa fa-trash-o"></i> Si
+                                                        </p:commandLink>
+                                                        <h:commandLink  onclick="$('#dialogDeleteRol').modal('hide')" type="reset" styleClass="btn btn-danger" title="No">
+                                                            <i class="fa fa-remove"></i> No 
+                                                            <p:ajax update="frmDeleteRol" resetValues="true" />
+                                                        </h:commandLink>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </ui:composition>
+</html>
+

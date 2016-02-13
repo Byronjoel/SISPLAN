@@ -1,0 +1,58 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <!-- **********************************************************************************************************************************************************
+    TOP BAR CONTENT & NOTIFICATIONS
+    *********************************************************************************************************************************************************** -->
+    <!--header start-->
+    <header class="header black-bg">
+         <h:link styleClass="active" outcome="/_docente/indexDocente.xhtml"><p:graphicImage title="Inicio"  value="/resources/img/ui-sam1.jpg"   width="500" height="100" /></h:link> <!--logo end-->
+        <div class="nav notify-row" id="top_menu">
+          <h:form id="useName"><h5 class="centered">#{utilString.devolverCadena(loginBean.objUsuario.nombres, loginBean.objUsuario.apellidos)}</h5></h:form>  
+            <!--  notification start -->
+            <ul class="nav top-menu">
+                <!-- settings start -->
+                <li class="dropdown">
+                    
+                    
+                </li>
+                <!-- settings end -->
+                
+                <!--ADMIN SETTINGS SECTIONS -->
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" title="Mis datos" >
+                        <i class="fa fa-user "></i> <i class="fa fa-chevron-down " style="font-size: 10px;"></i>
+                    </a>
+
+                    <ul class="dropdown-menu extended1 dropdown-user">
+                        <div class="notify-arrow1 notify-arrow-green"></div>
+                        <li><h:link outcome="/_estudiante/perfil/viewMyData.xhtml" title="Ver mis datos">
+                                <i class="fa fa-user"></i> Mi Perfil
+                            </h:link>
+                        </li>
+                        <li><h:link outcome="/_estudiante/perfil/editMyData.xhtml" title="Editar mis datos">
+                                <i class="fa fa-gear"></i> Mis Ajustes
+                            </h:link>
+                        </li>
+                        <li class="divider"></li>
+                        <li>      
+                            <h:form>
+                                <p:commandLink actionListener="#{loginBean.logout()}" styleClass="linkCerraSesion" oncomplete="logout(xhr, status, args)" title="Salir">
+                                    <i class="fa fa-sign-out"></i> Cerrar Sesión
+                                </p:commandLink>
+                            </h:form>
+                        </li>
+                    </ul>
+
+                </li>
+                <!--END ADMIN SETTINGS -->
+            </ul>
+            <!--  notification end -->
+        </div>
+    </header>
+    <!--header end-->
+</ui:composition>
+

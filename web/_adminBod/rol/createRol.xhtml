@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="modal fade" id="dialogCreateRol" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-Width-register">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h:form>
+                                    <h:commandLink  onclick="$('#dialogCreateRol').modal('hide')" type="reset" styleClass="close">
+                                        × 
+                                        <p:ajax update=":frmCreateRol" resetValues="true" />
+                                    </h:commandLink>
+                                </h:form>
+                                <h4 class="modal-title" id="H4"> Nuevo Registro</h4>
+                            </div>
+                            <div class="modal-body">
+                                <h:form styleClass="form-horizontal" id="frmCreateRol" rendered="false">
+                                    <fieldset>
+                                        <!-- Text input-->
+                                        <div class="form-group">
+                                            <h:outputLabel value="Nombre:" for="txtNombre" styleClass="col-md-4 control-label"/>
+                                            <div class="col-md-8">                                                
+                                                <p:inputText id="txtNombre" styleClass="form-control" value="#{rolBean.objRol.nombre}" title="Nombres" required="true" requiredMessage="El nombre es requerido!" validatorMessage="El nombre debe tener como mínimo de 3 caracteres y maximo de 45 caracteres.">
+                                                    <f:validateLength minimum="3" maximum="45"/>
+                                                </p:inputText>   
+                                                <p:watermark for="txtNombre" value="Escriba nombre de rol."/>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Text input-->
+                                        <div class="form-group">
+                                            <h:outputLabel value="Descripción:" for="txtDescripcion" styleClass="col-md-4 control-label"/>
+                                            <div class="col-md-8">                                                
+                                                <p:inputTextarea rows="6" cols="33" id="txtDescripcion" value="#{rolBean.objRol.descripcion}" title="Descripción" styleClass="form-control" style="height: 127px;"/>
+                                                <p:watermark for="txtDescripcion" value="Escriba una descripción."/>
+                                            </div>
+                                        </div>                                        
+
+                                        <!-- Button (Double) -->
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label" for="button1id"></label>
+                                            <div class="col-md-8">
+                                                <div class="modal-footer">
+                                                    <p:commandLink  actionListener="#{rolBean.insertarRol()}" update="frmCreateRol,:frmListaRol,:mensajes" oncomplete="handleSubmit1(args, 'dialogCreateRol');" styleClass="btn btn-success" title="Acpetar">
+                                                        <i class="fa fa-save"></i> Aceptar
+                                                    </p:commandLink>
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal" title="Cancelar"><i class="fa fa-remove"></i> Cancelar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </ui:composition>
+</html>
+

@@ -1,0 +1,101 @@
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+                 xmlns:h="http://java.sun.com/jsf/html"
+                 xmlns:f="http://java.sun.com/jsf/core"
+                 template="/templates/login/loginTemple.xhtml"
+                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                 xmlns:p="http://primefaces.org/ui"> 
+
+    <ui:define name="title">
+        <h:outputText value="Sisplan- Iniciar Sesión"></h:outputText>
+    </ui:define>
+
+    <ui:define name="content"> 
+        <div id="login-page">
+            <div class="container">	  	
+                <h:form styleClass="form-login">
+                    <h2 class="form-login-heading">SISPLAN - Autenticación de Usuarios <br/>                    
+                        
+                    </h2>
+                    <div class="login-wrap">
+
+                        <!-- Prepended text-->
+                         <h:outputLabel value="Cédula:" for="txtcedula" styleClass="col-md-4 control-label" />
+                        <div class="form-group">
+                            <div class="">
+                                <div class="input-group">
+                                   
+                                    <p:inputText id="tusuariocorreo" styleClass="form-control" value="#{loginBean.objUsuario.cedula}" title="Correo Electrónico" required="true" requiredMessage="El correo es requerido!"/>
+                                   
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Prepended text-->
+                        <h:outputLabel value="Contraseña" for="txtcontrasena" styleClass="col-md-4 control-label" />
+                        <div class="form-group">
+                            <div class="">
+                                <div class="input-group">
+                                    
+                                    <p:password id="tusuarioclave" styleClass="form-control" value="#{loginBean.objUsuario.clave}" title="Contrasena" required="true" requiredMessage="La contraseña es requerida!"/>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <p:commandLink id="btnIniciar" actionListener="#{loginBean.login}" update=":mensajes"
+                                       oncomplete="manejarLogin(xhr, status, args)" styleClass="btn btn-theme btn-block" >
+                            <i class="fa fa-lock"></i> Entrar
+                        </p:commandLink>
+                        <p:defaultCommand target="btnIniciar" />
+                        <hr></hr>
+
+                       
+
+                    </div>                
+                </h:form>
+
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            //<![CDATA[
+            function manejarLogin(xhr, status, args) {
+                if (!args.validationFailed && args.estaLogeado) {
+                    setTimeout(function () {
+                        window.location = args.view;
+                    }, 2000);
+                }
+            }
+            //]]>
+        </script>
+        <script type="text/javascript">
+            //<![CDATA[
+            function mostrarMensaje() {
+                $(document).ready(function () {
+                    $('#mensaje').removeClass("hidden");
+                });
+            }
+            //]]>
+        </script>
+        <script type="text/javascript">
+            //<![CDATA[
+            function mostrarMensajeError() {
+                $(document).ready(function () {
+                    $('#mensajeError').removeClass("hidden");
+                });
+            }
+            //]]>
+        </script>
+        <script type="text/javascript">
+            //<![CDATA[
+            function mostrarMensajeUsuario() {
+                $(document).ready(function () {
+                    $('#mensajeErrorUser').removeClass("hidden");
+                });
+            }
+            //]]>
+        </script>
+        
+    </ui:define>
+</ui:composition>

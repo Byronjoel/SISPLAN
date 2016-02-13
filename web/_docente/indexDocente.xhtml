@@ -1,0 +1,120 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"  
+                xmlns:h="http://java.sun.com/jsf/html"  
+                xmlns:f="http://java.sun.com/jsf/core"  
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" template="../templates/docente/main.xhtml">
+
+    <ui:define name="title">
+        <h:outputText value="Sisplan - Panel de Control"></h:outputText>
+        <h:outputStylesheet library="css" name="style.css"/>
+    </ui:define>
+
+
+    <ui:define name="content"> 
+        <section class="wrapper2 site-min-height2">
+            <h3><i class="fa fa-angle-right" style="font-size: 19px;"></i> Docente</h3>
+            <div class="row mt">
+                <div class="col-lg-12">
+                    <div class="panel panel-myPanel">       
+
+                        <div class="panel-heading centered">
+
+                            <button  class="btn btn-info" data-toggle="modal" data-target="#dialogCreateClase" title="Nuevo Registro">
+                                <i class="fa fa-plus"></i> Añadir Clase
+                            </button>
+                            <button  class="btn btn-info" data-toggle="modal" data-target="#dialogCreateUnidad" data-backdrop="static" title="Nueva Unidad ">
+                                <i class="fa fa-plus"></i> Añadir Unidad
+                            </button>
+                            <button disabled="true" class="btn btn-info" data-toggle="modal" title="No se permite crear ">
+                                <i class="fa fa-plus"></i> Modificar Unidad
+                            </button>
+                        </div>
+
+
+                        <h:form id="frmListClases">
+                            <p:growl id="msg" showDetail="true" life="30000"/>
+                            <p:panel header="Lista">
+                                <p:dataTable id="datalist" value="#{claseBean.lstClase}" var="item"
+                                             selectionMode="single"
+                                             paginator="true"
+                                             rowKey="#{item.unidadcodigo}"
+                                             rows="10" rowIndexVar="rowCount"
+                                             rowsPerPageTemplate="10,20,30,40,50" styleClass="table table-striped table-bordered table-hover"
+                                             >
+
+                                    <f:facet name="header">
+                                        <label class="col-md-4 control-label" for="cbxMaterias">MATERIAS:</label>
+                                        <p:selectOneMenu id="viewButton1"  value="#{claseBean.objClase.objMateria.idcarrera}"    >
+                                            <p:ajax  listener="#{claseBean.cargarClaseInterfaz()}"  update=":frmListClases:datalist,:frmListClases:msg"/>
+                                            <f:selectItems value="#{loginBean.selectItemsMenu}" />                                
+                                        </p:selectOneMenu>                    
+                                    </f:facet>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="No clase"/>
+                                        </f:facet>
+                                        <h:outputText value="#{rowCount+1}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Unidad"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.objUnidad.unidaddescripcion}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Temas"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.tematema}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Fecha"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.temafecha}">
+                                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Horario"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.objHorario.thorariohora}">
+                                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        </h:outputText>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Observaciones"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.temaobservaciones}"/>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Fecha actualizacion"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.fechaactualizacion}">
+                                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        </h:outputText>
+                                    </p:column>    
+                                    <p:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Progreso"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.objProgreso.tprogresodescripcion}"/>
+                                    </p:column>    
+                                </p:dataTable>
+                            </p:panel>
+                        </h:form>
+
+                    </div>
+
+                </div>
+            </div>
+            <ui:include src="anadirUnidad.xhtml"/>
+            <ui:include src="anadirClase.xhtml"/>
+
+        </section><!--/wrapper -->
+    </ui:define>
+</ui:composition>        
+

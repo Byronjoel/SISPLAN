@@ -1,0 +1,61 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"  
+                xmlns:h="http://java.sun.com/jsf/html"  
+                xmlns:f="http://java.sun.com/jsf/core"  
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" template="../templates/adminBod/main.xhtml"
+                xmlns:jsf="http://xmlns.jcp.org/jsf">
+    <ui:define name="libreriaEncabezado">  
+        <!-- GLOBAL STYLES -->
+        <h:outputStylesheet library="css" name="MoneAdmin.css"/>
+        <!--END GLOBAL STYLES -->
+        <!-- PAGE LEVEL STYLES -->
+        <h:outputStylesheet library="dataTables" name="dataTables.bootstrap.css"/>
+    </ui:define>
+
+    <ui:define name="content">                        
+        <section class="wrapper site-min-height">
+            <h3><i class="fa fa-angle-right" style="font-size: 19px;"></i> Actualizar datos </h3>
+            <div class="row mt">
+                <div class="col-lg-12">
+                    <div class="panel panel-myPanel">
+                        <div class="form-group">
+                            <div class="col-md-12">  
+
+
+                                <h:form styleClass="form-horizontal form-register" id="frmEscuela">
+                                    <p:commandLink actionListener="#{facultadBean.insertarFacultad()}"  update=":mensajes" styleClass="btn btn-theme btn-block"  title="Registrarme">
+                                        <i class="glyphicon glyphicon-import"></i> Cargar Facultad
+                                    </p:commandLink>
+                                   
+                                    <p:commandLink actionListener="#{facultadBean.insertarEscuel()}" update=":mensajes" styleClass="btn btn-theme btn-block"  title="Registrarme">
+                                        <i class="glyphicon glyphicon-import"></i> Cargar Escuela
+                                    </p:commandLink>
+
+                                    <p:commandLink actionListener="#{facultadBean.insertarCarrer()}" update=":mensajes" styleClass="btn btn-theme btn-block"  title="Registrarme">
+                                        <i class="glyphicon glyphicon-import"></i> Cargar Carrera
+                                    </p:commandLink>
+
+                                    <p:commandLink actionListener="#{facultadBean.insertarMateria()}" styleClass="btn btn-theme btn-block"  title="Registrarme">
+                                        <i class="glyphicon glyphicon-import"></i> Cargar Materia
+                                    </p:commandLink>
+                                </h:form>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!--/wrapper -->
+    </ui:define>
+    <ui:define name="libreriaPie">  
+        <h:outputScript library="dataTables" name="jquery.dataTables.js" />
+        <h:outputScript library="dataTables" name="dataTables.bootstrap.js" />
+        <script>
+            $(document).ready(function () {
+                $('#myDataTables').dataTable();
+            });</script>
+        <!-- END PAGE LEVEL SCRIPTS -->
+    </ui:define>
+</ui:composition>        
+

@@ -1,0 +1,114 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+}
+.ubicacion{
+    float: right;
+}
+
+footer {
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #efefef;
+}
+
+.areaImagen{
+    margin-top: 40px;
+}
+
+.panel-default>.panel-heading {
+    background-color: #FFFAFA;
+}
+
+
+/*	ESTILO PAGINA PRINCIPAL		*/
+.navbar {
+    border-radius: 0px;
+}
+
+.panel-success>.panel-principal {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.txt-precio{
+    color: #d7192d;
+    font-size: 2.143em;
+    display: block;
+}
+
+
+.badge {
+    background-color: #AE1515;
+}
+
+
+.control-group1{
+    display: flex;
+}
+/*  disenio pg principal softlab*/
+.navbar {
+    border-radius: 0px !important;
+    min-height: 60px;
+}
+
+.navbar-inverse {
+    background-color: #000;
+    border-color: #000;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #FFFFFF;
+}
+.navbar-nav {
+    float: right;
+    margin: 0;
+}
+@media (max-width: 768px) {
+    .navbar-nav {
+        float: left;
+        margin: 0;
+    }  
+
+    ul.nav.navbar-nav {
+        color: #9d9d9d;
+        background-color: rgba(5, 72, 107, 1);
+        padding: 8px;
+        margin-top: 6px;
+        color: white;
+        width: 100%;
+    }
+    .navbar-collapse{
+        background-color:  rgb(5, 72, 107);
+    }
+    .navbar-inverse .navbar-nav > li > a {
+        text-align: left !important;
+        border-radius: 0px !important;
+        border:none !important;
+        border-bottom: 1px rgb(255, 255, 255) solid !important;
+    }
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #9d9d9d;
+    background-color: #05486B;
+    border-radius: 6px;
+    margin-right: 4px;
+    padding: 8px;
+    margin-top: 6px;
+    color: white;
+    min-width: 100px;
+    text-align: center;
+    border: 1px rgb(3, 137, 168) solid;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+  color: #fff;
+  background-color: #0389A8;
+  border: 1px rgb(0, 98, 148) solid;
+}

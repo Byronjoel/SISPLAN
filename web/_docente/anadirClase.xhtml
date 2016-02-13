@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="modal fade" id="dialogCreateClase" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-Width-register">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h:form>
+                                    <h:commandLink  onclick="$('#dialogCreateClase').modal('hide')" type="reset" styleClass="close">
+                                        × 
+                                        <p:ajax update=":frmCreateClase" resetValues="true" />
+                                    </h:commandLink>
+                                </h:form>
+                                <h4 class="modal-title" id="H4"> Nueva Clase</h4>
+                            </div>
+                            <div class="modal-body">
+                                <h:form styleClass="form-horizontal" id="frmCreateClase" >
+                                    <fieldset>
+                                        <!-- Seleccionar materia-->
+                                        <p:growl autoUpdate="true"/>
+
+                                        <!--   #{utilString.devolverCadena(loginBean.objUsuario.cedula, loginBean.objUsuario.clave)}-->
+                                        <div class="form-group"  >
+
+                                            <label class="col-md-4 control-label" for="cbxMaterias1">Materias:</label>
+                                            <h:selectOneMenu id="materias"  value="#{claseBean.objClase.objMateria.idcarrera}"    >
+                                                <p:ajax  update="frmCreateClase:unidades,:mensajes"/>
+                                                <f:selectItems value="#{loginBean.selectItemsMenu}" />
+
+                                            </h:selectOneMenu>
+                                        </div>
+                                        <!-- Describir el campo -->
+                                        <div class="form-group"  >
+
+                                            <label class="col-md-4 control-label" for="cbxMaterias">Unidades:</label>
+                                            <h:selectOneMenu id="unidades"  value="#{claseBean.objClase.objUnidad.unidadcodigo}"    >
+                                                <f:selectItems value="#{loginBean.getSelectItemsUnidadByMateria(claseBean.objClase.objMateria.idcarrera)}" var="tipoEscuelaItem"
+                                                       itemValue="#{tipoEscuelaItem}" />
+
+                                            </h:selectOneMenu>
+                                        </div>
+
+                                        <!-- Describir el campo -->
+                                        <div class="form-group">
+                                            <h:outputLabel value="Tema" for="txtTema" styleClass="col-md-4 control-label"/>
+                                            <div class="col-md-8">                                                
+                                                <p:inputText id="txtTema" styleClass="form-control" value="#{claseBean.objClase.tematema}" title="Tema" required="true" requiredMessage="El nombre es requerido!" validatorMessage="El nombre debe tener como mínimo de 3 caracteres y maximo de 45 caracteres.">
+                                                    <f:validateLength minimum="3" maximum="45"/>
+                                                </p:inputText>   
+                                                <p:watermark for="txtTema" value=""/>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- Describir el campo -->
+                                        <div class="form-group">
+
+                                            <h:outputLabel value="Fecha de clase:" for="txtfecha" styleClass="col-md-4 control-label" />
+                                            <div class="col-md-8">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar" style="width: 11px;"></i></span>
+                                                    <p:calendar id="txtfecha"  value="#{claseBean.objClase.temafecha}" pattern="yyyy-MM-dd" mindate="#{utilDates.sumarRestarDiasFecha(registerBean.fechaActual(),-5)}"  maxdate="#{utilDates.sumarRestarDiasFecha(registerBean.fechaActual(),3578)}" mask="true" effect="explode" required="true" title="Fecha de la clase" requiredMessage="La fecha de nacimiento es requerido!"/>
+                                                    <p:watermark for="txtfecha" value="1993-02-03"/>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <!-- Describir el campo -->
+                                        <!-- Describir el campo -->
+
+
+                                        <div class="form-group"  >
+
+                                            <label class="col-md-4 control-label" for="cbxHorario">Horario: </label>
+                                            <h:selectOneMenu id="horario"  value="#{claseBean.objClase.objHorario.idthorario}"    >
+                                                <f:selectItems value="#{horarioBean.selectItemsHorario}" />
+
+                                            </h:selectOneMenu>
+                                        </div>
+
+
+
+                                        <!-- Describir el campo -->
+
+
+                                        <div class="form-group"  >
+
+                                            <label class="col-md-4 control-label" for="cbxProgreso">Progreso: </label>
+                                            <h:selectOneMenu id="progreso"  value="#{claseBean.objClase.objProgreso.idtprogreso}"    >
+                                                <f:selectItems value="#{progresoBean.selectItemsProgreso}" />
+
+                                            </h:selectOneMenu>
+                                        </div>
+
+
+                                        <!-- Describir el campo -->
+                                        <div class="form-group">
+                                            <h:outputLabel value="Observaciones" for="txtObservaciones" styleClass="col-md-4 control-label"/>
+                                            <div class="col-md-8">                                                
+                                                <p:inputText id="txtObservaciones" styleClass="form-control" value="#{claseBean.objClase.temaobservaciones}" title="Fecha" required="true" requiredMessage="El nombre es requerido!" validatorMessage="El nombre debe tener como mínimo de 3 caracteres y maximo de 45 caracteres.">
+                                                    <f:validateLength minimum="3" maximum="200"/>
+                                                </p:inputText>   
+                                                <p:watermark for="txtObservaciones" value=""/>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+
+                                            <!-- fecha actualizaciòn-->
+                                            <h:outputLabel value="Fecha Actualizacion" for="txtFActualizacion" styleClass="col-md-4 control-label"/>
+                                            <div class="col-md-8">  
+                                                <h:inputText id="txtFActualizacion" disabled="true" value="#{claseBean.objClase.fechaSistema()}"  styleClass="col-md-12 control-label" >
+                                                    <f:convertDateTime pattern="yyyy-MM-dd" />
+                                                </h:inputText>
+                                            </div>
+
+                                            <!-- -->
+
+                                        </div>
+                                        <!-- Button (Double) -->
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label" for="button1id"></label>
+                                            <div class="col-md-8">
+                                                <div class="modal-footer">
+                                                    <p:commandLink  actionListener="#{claseBean.insertarClase()}" oncomplete="$('#dialogCreateClase').modal('hide')" update="frmCreateClase,:mensajes"  styleClass="btn btn-success" title="Aceptar">
+                                                        <i class="fa fa-save"></i> Aceptar
+                                                    </p:commandLink>
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal" title="Cancelar"><i class="fa fa-remove"></i> Cancelar</button>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+                                    </fieldset>
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </ui:composition>
+</html>
+

@@ -1,0 +1,2 @@
+http://blog.hatemalimam.com/jsf-and-twitter-bootstrap-integration/ tutorial
+para agregar bootstrap a JSF

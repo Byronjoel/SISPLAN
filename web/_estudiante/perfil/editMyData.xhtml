@@ -1,0 +1,147 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"  
+                xmlns:h="http://java.sun.com/jsf/html"  
+                xmlns:f="http://java.sun.com/jsf/core"  
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" template="../../templates/estudiante/main.xhtml">
+
+    <ui:define name="title">
+        <h:outputText value="SoftLab - Mi perfil"></h:outputText>
+    </ui:define>
+
+    <ui:define name="content">                        
+        <section class="wrapper site-min-height">
+            <h3><i class="fa fa-angle-right" style="font-size: 19px;"></i> Mis Ajustes</h3>
+            <div class="row mt">
+                <div class="col-lg-12">
+                    <div class="col-md-4 col-sm-4 mb centeredDiv">
+                        <div class="darkblue-panel pn" style="border-radius: 5px;" id="myData">
+                            <h:form class="form-horizontal" id="frmUpdateMyUser">
+                                <div class="darkblue-header">
+                                    <h5>#{utilString.devolverCadena(loginBean.objUsuario.nombres, loginBean.objUsuario.apellidos)}</h5>
+                                </div>
+                                <h:link outcome="/_estudiante/perfil/viewMyData.xhtml" title="Ver mis datos">
+                                    <h1 class="mt"><i class="fa fa-user fa-3x"></i></h1>
+                                </h:link>
+                                <p style="color: rgb(1, 183, 165);">#{loginBean.objUsuario.cedula}</p>
+                                <footer>
+                                    <div style="padding: 15px;">
+                                        <h5><i class="fa fa-lock"></i> #{loginBean.objUsuario.objRol.nombre}</h5>
+                                        <fieldset>
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <h:outputLabel value="Cédula:" for="txtCedula" styleClass="col-md-4 control-label" />
+                                                <div class="col-md-8">
+                                                    <p:inputMask id="txtCedula" styleClass="form-control" value="#{loginBean.objUsuario.cedula}" title="Cédula" required="true" requiredMessage="La cédula es requerida!" validatorMessage="La cédula debe ser de 10 dígitos sin guión." mask="9999999999"/>
+                                                    <p:watermark for="txtCedula" value="1609514785"/>
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <h:outputLabel value="Nombres:" for="txtNombres" styleClass="col-md-4 control-label"/>
+                                                <div class="col-md-8">                                                
+                                                    <p:inputText id="txtNombres" styleClass="form-control" value="#{loginBean.objUsuario.nombres}" title="Nombres" required="true" requiredMessage="Los nombres son requeridos!" validatorMessage="Los nombres deben ser mínimo de 3 caracteres y maximo de 25 caracteres.">
+                                                        <f:validateLength minimum="3" maximum="25"/>
+                                                    </p:inputText>    
+                                                    <p:watermark for="txtNombres" value="Mis mombres"/>
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">                                            
+                                                <h:outputLabel value="Apellidos:" for="txtApellidos" styleClass="col-md-4 control-label" />
+                                                <div class="col-md-8">
+                                                    <p:inputText id="txtApellidos" styleClass="form-control" value="#{loginBean.objUsuario.apellidos}" title="Apellidos" required="true" requiredMessage="Los apellidos son requeridos!" validatorMessage="Los apellidos deben ser mínimo de 3 caracteres y maximo de 45 caracteres.">
+
+                                                    </p:inputText>   
+                                                    <p:watermark for="txtApellidos" value="Mis apellidos"/>
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <h:outputLabel value="Correo:" for="txtCorreo" styleClass="col-md-4 control-label" />
+                                                <div class="col-md-8">
+                                                    <p:inputText id="txtCorreo" styleClass="form-control" value="#{loginBean.objUsuario.correo}" title="Correo" required="true" requiredMessage="El correo es requerido!" validatorMessage="Formato de email inválido!">
+                                                        <f:validateLength minimum="5" maximum="45"/>
+                                                        <f:validateRegex
+                                                            pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                                                    </p:inputText>   
+                                                    <p:watermark for="txtCorreo" value="micorreo@micorreo.com"/>
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <h:outputLabel value="Fecha de Nacimiento:" for="txtFechaNacimiento" styleClass="col-md-4 control-label" />
+                                                <div class="col-md-8">
+                                                    <p:calendar id="txtFechaNacimiento" value="#{loginBean.objUsuario.fechaNacimiento}" pattern="yyyy-MM-dd" mindate="1950-01-01" maxdate="2006-01-01"  mask="true" required="true" title="Fecha de nacimiento" styleClass="calendarModal" requiredMessage="La fecha de nacimiento es requerido!"/>
+                                                    <p:watermark for="txtFechaNacimiento" value="1993-03-02"/>
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <h:outputLabel value="Teléfono/Celular:" for="txtTelefono" styleClass="col-md-4 control-label" /> 
+                                                <div class="col-md-8">
+                                                    <p:inputMask id="txtTelefono" styleClass="form-control" value="#{loginBean.objUsuario.telefono}" title="Teléfono" required="true" requiredMessage="El teléfono es requerido!" mask="(999) 999-999-9999"/>                                                    
+                                                    <p:watermark for="txtTelefono" value="+593 032 931 2604"/>
+
+                                                </div>
+                                            </div>
+
+                                            <!-- Password input-->
+                                            <div class="form-group">
+                                                <h:outputLabel value="Contraseña:" for="txtContrasena" styleClass="col-md-4 control-label" />
+                                                <div class="col-md-8">                                                
+                                                    <p:password id="txtContrasena" styleClass="form-control" value="#{loginBean.objUsuario.clave}" title="Contraseña" feedback="true"  validatorMessage="La contraseña debe tener al menos 6 caracteres.">
+                                                        <f:validateLength  maximum="45"/>
+                                                    </p:password>
+                                                </div>
+                                            </div>
+
+
+                                            <!-- Multiple Radios (inline) -->
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="rbtSexo">Sexo:</label>
+                                                <h:selectOneRadio id="rbtnSexo" styleClass="col-md-6 rbtnStyle" value="#{loginBean.objUsuario.sexo}" layout="grid" required="true" requiredMessage="El sexo es requerido!">
+                                                    <f:selectItem itemLabel="Mujer" itemValue="Mujer" />
+                                                    <f:selectItem itemLabel="Hombre" itemValue="Hombre" />
+                                                </h:selectOneRadio>
+                                            </div>
+                                            <!-- Select Basic -->
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="cbxRol">Rol:</label>
+                                                <div class="col-md-8">
+                                                    <h:selectOneMenu id="console" value="#{loginBean.objUsuario.objRol.codigo}" styleClass="form-control" >
+                                                        <f:selectItems value="#{selectItemsBean.selectOneItemsRol}"/>
+                                                    </h:selectOneMenu>
+                                                </div>
+                                            </div>
+
+                                            <!-- Button (Double) -->
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label" for="button1id"></label>
+                                                <div class="col-md-8">
+                                                    <p:commandLink actionListener="#{loginBean.updateSession(loginBean.objUsuario)}" update="frmUpdateMyUser,:userName,:mensajes" oncomplete="handleSubmitMyData(args, 'myData');"  styleClass="btn btn-info" title="Aceptar">                                                        
+                                                        <i class="fa fa-save"></i> Actualizar 
+                                                    </p:commandLink>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </footer>
+                            </h:form>
+                        </div><!-- /darkblue panel-->
+                    </div>
+
+                </div>
+            </div>
+
+        </section><!--/wrapper -->
+    </ui:define>
+</ui:composition>        
+

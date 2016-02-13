@@ -1,0 +1,67 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"  
+                xmlns:h="http://java.sun.com/jsf/html"  
+                xmlns:f="http://java.sun.com/jsf/core"  
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" template="../../templates/docente/main.xhtml">
+
+    <ui:define name="title">
+        <h:outputText value="SoftLab - Mi perfil"></h:outputText>
+    </ui:define>
+
+    <ui:define name="content">                        
+        <section class="wrapper site-min-height">
+            <h3><i class="fa fa-angle-right" style="font-size: 19px;"></i> Mi Perfil</h3>
+            <div class="row mt">
+                <div class="col-lg-12">
+                    <div class="col-md-4 col-sm-4 mb centeredDiv">
+                        <div class="darkblue-panel pn" style="border-radius: 5px;">
+                            <div class="darkblue-header">
+                                <h5>#{utilString.devolverCadena(loginBean.objUsuario.nombres, loginBean.objUsuario.apellidos)}</h5>
+                            </div>
+                            <h:link outcome="/_docente/perfil/editMyData.xhtml" title="Editar mis datos">
+                                <h1 class="mt"><i class="fa fa-user fa-3x"></i></h1>
+                            </h:link>
+                            <p style="color: rgb(1, 183, 165);">#{loginBean.objUsuario.cedula}</p>
+                            <footer>
+                                <div style="padding-left: 15px;">
+                                    <h5><i class="fa fa-lock"></i> #{loginBean.objUsuario.objRol.nombre}</h5>
+                                    <h:form styleClass="form-horizontal" id="frmViewUser">
+                                        <fieldset>
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <h:outputLabel value="Nombres:" styleClass="col-md-4 control-label label-form"/>
+                                                <div class="col-md-8">                                                
+                                                    <h:outputLabel value="#{loginBean.objUsuario.nombres}" styleClass="col-md-12 control-label" />
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">                                            
+                                                <h:outputLabel value="Apellidos:" styleClass="col-md-4 control-label label-form" />
+                                                <div class="col-md-8">
+                                                    <h:outputLabel value="#{loginBean.objUsuario.apellidos}" styleClass="col-md-12 control-label" />
+                                                </div>
+                                            </div>
+
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <h:outputLabel value="Correo:"  styleClass="col-md-4 control-label label-form" />
+                                                <div class="col-md-8">
+                                                    <h:outputLabel value="#{loginBean.objUsuario.correo}" styleClass="col-md-12 control-label" />
+                                                </div>
+                                            </div>
+
+                                        </fieldset>
+                                    </h:form>
+                                </div>
+                            </footer>
+                        </div><!-- /darkblue panel-->
+                    </div>
+
+                </div>
+            </div>
+
+        </section><!--/wrapper -->
+    </ui:define>
+</ui:composition>        
+

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <meta name="keyword" content="Espoch, Sistema, Ciencias, Facultad, foqc, Riobamba, Ecuador, Clase"/>
+        </f:facet>
+        <f:facet name="middle">
+            <h:outputStylesheet name="/bootstrap/css/bootstrap.css" />            
+            <h:outputStylesheet name="css/myStyle.css" />
+        </f:facet>
+        <f:facet name="last">
+            <h:outputStylesheet name="css/font-awesome.css" />
+        </f:facet>
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+    </h:head>
+
+    <h:body>
+        <section id="container">
+            <ui:include src="header.xhtml" />
+            <div class="container">
+                <ui:include src="content.xhtml" />            
+            </div>   
+            <footer class="text-center" style="background-color: #01B7A5;">
+                <p style="color: white">Todos los derechos reservados <a href="http://espoch.edu.ec/" style="color:#FFFFFF;"><strong>ESPOCH.</strong></a> © Copyright ESPOCH 2015.<br/>
+                </p>
+                <p style="color: white">Dirección: Panamericana Sur km 1 1/2, Riobamba - Ecuador | Teléfono: 593 (03) 2 998-200 | Telefax: (03) 2 317-001 | Código Postal: EC060155.</p>
+            </footer>
+        </section>
+
+        <h:outputScript library="js" name="jquery.js" />
+        <h:outputScript library="js" name="bootstrap.min.js" />
+    </h:body>
+</html>

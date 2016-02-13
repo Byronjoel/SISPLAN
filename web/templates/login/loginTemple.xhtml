@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+    <h:head>
+        <title><ui:insert name="title">Iniciar Sesión - FC</ui:insert></title>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <meta name="keyword" content="Espoch, Riobamba, Ecuador, Clase"/>
+        </f:facet>
+        <f:facet name="middle">
+            <!-- Custom styles for this template -->
+            <h:outputStylesheet name="css/font-awesome.css" />
+            <!-- Custom styles for this template -->
+            <h:outputStylesheet name="css/style.css" />
+            <h:outputStylesheet name="css/style-responsive.css" />
+        </f:facet>
+        <f:facet name="last">
+            <h:outputStylesheet name="/bootstrap/css/bootstrap.css" />
+        </f:facet>        
+    </h:head>
+
+    <h:body>               
+        
+        <p:growl id="mensajes" showDetail = "true" life="5000"/>
+        <ui:insert name="content" />   
+
+        <!-- js placed at the end of the document so the pages load faster -->
+        <h:outputScript library="js" name="bootstrap.min.js" />
+
+        <!--BACKSTRETCH-->
+        <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+        <h:outputScript library="js" name="jquery.backstretch.min.js" />
+        <script>
+            $.backstretch("#{resource['img/login-bg.jpg']}", {speed: 500});
+        </script>
+
+    </h:body> 
+</html>

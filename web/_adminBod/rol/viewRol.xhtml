@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:composition>
+        <div class="row">
+            <div class="col-lg-12">
+                <div data-backdrop="static" class="modal fade" id="dialogViewRol" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-Width-view">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title" id="H4"> Ver Registro</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="modal-contenido">
+                                    <h:form styleClass="form-horizontal" id="frmViewRol">
+                                        <fieldset>
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <h:outputLabel value="Nombre:" styleClass="col-md-4 control-label label-form" />
+                                                <div class="col-md-8">
+                                                    <h:outputLabel value="#{rolBean.selObjRol.nombre}" class="col-md-12 control-label" />
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                                <h:outputLabel value="Descripción:" styleClass="col-md-4 control-label label-form" />
+                                                <div class="col-md-8">
+                                                    <h:outputLabel value="#{rolBean.selObjRol.descripcion}" class="col-md-12 control-label" />
+                                                </div>
+                                            </div>
+                                            
+                                            <hr/>
+                                            <!-- Button (Double) -->
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label"></label>
+                                                <div class="col-md-8">
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal" title="Cerrar"><i class="fa fa-remove"></i> Cerrar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </ui:composition>
+</html>
+
